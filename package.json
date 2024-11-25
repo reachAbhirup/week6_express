@@ -1,0 +1,14 @@
+{
+  "name": "backend_learning",
+  "version": "1.0.0",
+  "description": "learning Express http library to create backend server",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "abhirup",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}
