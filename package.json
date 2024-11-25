@@ -1,5 +1,5 @@
 {
-  "name": "backend_learning",
+  "name": "week6_express",
   "version": "1.0.0",
   "description": "learning Express http library to create backend server",
   "main": "index.js",
