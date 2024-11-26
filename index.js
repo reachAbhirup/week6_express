@@ -4,20 +4,15 @@ const app = express();
 const users = [{
     name:"John",
     kidneys:[{
-        healthy:false
+        healthy:true
     }]
 }];
 
 app.get("/", (req, res) => {
     const johnKidneys = users[0].kidneys;
     const noOfKidneys = johnKidneys.length;
-    
-    let numberOfHealthyKidneys = 0;
-    for (let i=0; i<noOfKidneys; i++){
-        if(johnKidneys.healthy ){
-            numberOfHealthyKidneys= numberOfHealthyKidneys + 1;
-        }
-    }
+
+    let numberOfHealthyKidneys = johnKidneys.filter(kidney => kidney.healthy).length;
     const numberOfUnHealthyKidneys = noOfKidneys - numberOfHealthyKidneys;
 
     res.json({
