@@ -10,6 +10,7 @@ const users = [{
 
 app.use(express.json());
 
+// read the current stattus of kidneys of the given user
 app.get("/", (req, res) => {
     const johnKidneys = users[0].kidneys;
     const noOfKidneys = johnKidneys.length;
@@ -25,6 +26,7 @@ app.get("/", (req, res) => {
 
 });
 
+// adding new kidneys regardless of being the kidney to be healthy or unhealthy
 app.post("/", (req, res) => {
     const isNewKidneyHealthy = req.body.isHealthy;
     users[0].kidneys.push({healthy:isNewKidneyHealthy});
@@ -34,6 +36,7 @@ app.post("/", (req, res) => {
     })
 });
 
+// modifying all the unhealthy kidneys to healthy ones
 app.put("/", (req, res) => {
     for (let i=0; i<users[0].kidneys.length; i++){
         users[0].kidneys[i].healthy = true;
@@ -43,7 +46,12 @@ app.put("/", (req, res) => {
 
 });
 
-app.delete("/", (req, res) => {
+// removing all the unhealthy kidneys
+app.delete("/", (req, res) => { 
+    const healthyKidneys = users[0].kidneys.filter((kidney => kidney.healthy));
+    users[0].kidneys = healthyKidneys;
+
+    res.json({"msg": "done!"});
 
 })
 
